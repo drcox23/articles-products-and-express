@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const bp = require('body-parser');
 const exphbs = require('express-handlebars');
+const Articles = require('./db/articles.js');
+
 
 app.use(express.static('public'));
 
