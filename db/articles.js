@@ -2,6 +2,18 @@ class Articles {
   constructor() {
     this._count = 1;
     this._storage = [];
+    this.add({
+      name: 'Brand New Article',
+      desription: 'This is a new article'
+    });
+    this.add({
+      name: 'Sports Article',
+      description: 'This is a generic sports article'
+    });
+    this.add({
+      name: 'Fashion Article',
+      description: 'This is a generic fashion article'
+    })
     
   }
   all() {
@@ -9,7 +21,7 @@ class Articles {
   }
 
   getArticleById(id) {
-    return this._storage.filter(interface => id == article.id)[0];
+    return this._storage.filter(article => id == article.id)[0];
   }
 
   add(article) {
