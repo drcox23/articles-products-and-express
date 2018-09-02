@@ -62,6 +62,15 @@ app.get("/products/new", (req, res) => {
   res.render("form", { addProduct });
 });
 
+//post a new product
+app.post("/products/new", (req, res) => {
+  console.log("new product posted");
+  const newProd = req.body;
+  console.log("post Prod: ", newProd);
+  DS_Prod.add(newProd);
+  res.redirect("/products");
+});
+
 app.listen(process.env.PORT, () => {
   console.log(`Started app on port: ${process.env.PORT}`);
 });

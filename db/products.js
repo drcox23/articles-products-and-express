@@ -3,7 +3,7 @@ class Products {
     this._count = 1;
     this._storage = [];
     this.add({
-      name: "Products",
+      name: "This is a Product",
       desription: "check this product out"
     });
   }
