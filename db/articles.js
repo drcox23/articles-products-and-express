@@ -2,22 +2,26 @@ class Articles {
   constructor() {
     this._count = 1;
     this._storage = [];
+    this.headerName = "Articles";
     this.add({
-      name: 'Brand New Article',
-      desription: 'This is a new article'
+      name: "Brand New Article",
+      desription: "This is a new article"
     });
     this.add({
-      name: 'Sports Article',
-      description: 'This is a generic sports article'
+      name: "Sports Article",
+      description: "This is a generic sports article"
     });
     this.add({
-      name: 'Fashion Article',
-      description: 'This is a generic fashion article'
-    })
-    
+      name: "Fashion Article",
+      description: "This is a generic fashion article"
+    });
   }
   all() {
-    return[...this._storage];
+    return [...this._storage];
+  }
+
+  getTitle() {
+    return this.headerName;
   }
 
   getArticleById(id) {
@@ -33,7 +37,6 @@ class Articles {
 
   updateArticleById(id) {}
   deleteArticleById(id) {}
-
 }
 
-module.exports = Articles
+module.exports = Articles;

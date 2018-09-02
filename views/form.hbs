@@ -1,0 +1,20 @@
+<form action="./new" method="post">
+
+  {{#if addArticle}}
+  <label>New Article:
+    <input type="text" name="name" id="">
+  </label>
+  <label>Description:
+    <input type="text" name="description" id="">
+  </label>
+  <input type="submit" value="Submit"> {{/if}} {{#if addProduct}}
+  <label>New Product:
+    <input type="text" name="name" id="">
+  </label>
+  <label>Description:
+    <input type="text" name="description" id="">
+  </label>
+  <input type="submit" value="Submit"> {{/if}}
+
+</form>
+<br> {{> footer}}
