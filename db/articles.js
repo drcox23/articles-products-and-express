@@ -2,18 +2,21 @@ class Articles {
   constructor() {
     this._count = 1;
     this._storage = [];
-    this.headerName = "Articles";
+
     this.add({
-      name: "Brand New Article",
-      desription: "This is a new article"
+      title: "Brand New Article",
+      body: "This is a new article",
+      author: "LeBron James"
     });
     this.add({
-      name: "Sports Article",
-      description: "This is a generic sports article"
+      title: "Sports Article",
+      body: "This is a generic sports article",
+      author: "Dan Patrick"
     });
     this.add({
-      name: "Fashion Article",
-      description: "This is a generic fashion article"
+      title: "Fashion Article",
+      body: "This is a generic fashion article",
+      author: "Versace"
     });
   }
   all() {

@@ -18,25 +18,20 @@ app.set("view engine", ".hbs");
 //   res.send('Aloha');
 // })
 
-//render items
+//render home page
 app.get("/", (req, res) => {
   // const articles = DS_Art.all();
   console.log("home");
   res.render("home");
 });
 
+// ############# ARTICLES ###################
+
 // get to articles index
 app.get("/articles", (req, res) => {
   const articles = DS_Art.all();
-  console.log("articles", articles);
+  // console.log("articles", articles);
   res.render("index", { articles });
-});
-
-//get to products index
-app.get("/products", (req, res) => {
-  const products = DS_Prod.all();
-  console.log("products", products);
-  res.render("index", { products });
 });
 
 //get to new articles form
@@ -44,6 +39,15 @@ app.get("/articles/new", (req, res) => {
   console.log("lets add an article");
   const addArticle = true;
   res.render("form", { addArticle });
+});
+
+// get to articles details
+app.get("/articles/:id", (req, res) => {
+  console.log("call the art DEETS");
+  const { id } = req.params;
+  const artDeets = DS_Art.getArticleById(id);
+  console.log("article: ", artDeets);
+  res.render("articles", artDeets);
 });
 
 //post a new article
@@ -55,11 +59,29 @@ app.post("/articles/new", (req, res) => {
   res.redirect("/articles");
 });
 
+// ############## PRODUCTS ############
+
+//get to products index
+app.get("/products", (req, res) => {
+  const products = DS_Prod.all();
+  console.log("products", products);
+  res.render("index", { products });
+});
+
 //get to new products form
 app.get("/products/new", (req, res) => {
   console.log("lets add an product");
   const addProduct = true;
   res.render("form", { addProduct });
+});
+
+// get to products details
+app.get("/products/:id", (req, res) => {
+  console.log("call the prod DEETS");
+  const { id } = req.params;
+  const prodDeets = DS_Prod.getArticleById(id);
+  console.log("product: ", prodDeets);
+  res.render("products", prodDeets);
 });
 
 //post a new product

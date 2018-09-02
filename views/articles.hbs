@@ -1,8 +1,6 @@
- {{#each articles}}
-<div>
-  <a href='/articles/{{id}}'>{{name}}</a>
-</div>
-{{/each}}
+<h1>{{title}}</h1>
 
-<br>
-<a href="/articles/new">NEW ITEM</a>
+<p>About the Article: {{body}}</p>
+<p>Author: {{author}}</p>
+
+<br>{{> footer}}

@@ -4,7 +4,8 @@ class Products {
     this._storage = [];
     this.add({
       name: "This is a Product",
-      desription: "check this product out"
+      price: 10.0,
+      inventory: 3
     });
   }
   all() {
@@ -22,8 +23,12 @@ class Products {
     return product.id;
   }
 
-  updateArticleById(id) {}
-  deleteArticleById(id) {}
+  updateProductById(id) {
+    product.id = this._count;
+  }
+  deleteProductById(id) {
+    product.id = this._count;
+  }
 }
 
 module.exports = Products;

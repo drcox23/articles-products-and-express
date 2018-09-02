@@ -2,18 +2,28 @@
 
   {{#if addArticle}}
   <label>New Article:
-    <input type="text" name="name" id="">
+    <input type="text" name="title" id="">
   </label>
-  <label>Description:
-    <input type="text" name="description" id="">
+  <label>About:
+    <input type="text" name="body" id="">
   </label>
+  <label>Author:
+    <input type="text" name="author" id="">
+  </label>
+  <br>
+  <br>
   <input type="submit" value="Submit"> {{/if}} {{#if addProduct}}
-  <label>New Product:
+  <label>New Product Name:
     <input type="text" name="name" id="">
   </label>
-  <label>Description:
-    <input type="text" name="description" id="">
+  <label>Price $:
+    <input type="number" name="price" id="">
   </label>
+  <label>Inventory:
+    <input type="number" name="inventory" id="">
+  </label>
+  <br>
+  <br>
   <input type="submit" value="Submit"> {{/if}}
 
 </form>
