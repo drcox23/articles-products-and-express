@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const bp = require("body-parser");
+const methodOverride = require("method-override");
 const exphbs = require("express-handlebars");
 const Articles = require("./db/articles.js");
 const Products = require("./db/products.js");
@@ -10,6 +11,11 @@ const DS_Prod = new Products();
 app.use(express.static("public"));
 
 app.use(bp.urlencoded({ extended: true }));
+
+// setting up for method-override
+app.use(methodOverride("X-HTTP-Method-Override"));
+
+app.use(methodOverride("_method));"));
 
 app.engine(".hbs", exphbs({ defaultLayout: "main", extname: ".hbs" }));
 app.set("view engine", ".hbs");
@@ -50,6 +56,24 @@ app.get("/articles/:id", (req, res) => {
   res.render("articles", artDeets);
 });
 
+// get an article to edit
+app.get("/articles/:title/edit", (req, res) => {
+  console.log("this is to get articles to edit");
+  const { title } = req.params;
+  console.log("we are editing: ", title);
+  const editArtItem = DS_Art.getTitle(title);
+  res.render("edit", { editArtItem });
+});
+
+// get an article to edit
+app.get("/articles/:title/edit", (req, res) => {
+  console.log("this is to get articles to edit");
+  const { title } = req.params;
+  console.log("we are editing: ", title);
+  const editArtItem = DS_Art.getTitle(title);
+  res.render("edit", { editArtItem });
+});
+
 //post a new article
 app.post("/articles/new", (req, res) => {
   console.log("new article posted");
@@ -57,6 +81,25 @@ app.post("/articles/new", (req, res) => {
   console.log("post Art: ", newArt);
   DS_Art.add(newArt);
   res.redirect("/articles");
+});
+
+//edit an article
+app.put("/articles/:title", (req, res) => {
+  console.log("lets edit this article");
+  console.log("req params: ", req.params);
+  const { title } = req.params;
+  let editArt = DS_Art.getTitle(title);
+  console.log("article to edit: ", editArt);
+  if (req.body.title !== editArt.title) {
+    editArt.title = req.body.title;
+  }
+  if (req.body.body !== editArt.body) {
+    editArt.body = req.body.body;
+  }
+  if (req.body.author !== editArt.author) {
+    editArt.author = req.body.author;
+  }
+  res.redirect(`/articles/${editArt.title}`);
 });
 
 // ############## PRODUCTS ############

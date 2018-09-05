@@ -1,0 +1,23 @@
+ {{#with editArt}}
+<form action="/articles/{{title}}?_method=PUT" method="post">
+
+  <label>Title:
+    <textarea name="title" id="">{{title}}</textarea>
+  </label>
+  <label>Body:
+    <textarea name="body" id="">{{body}}</textarea>
+  </label>
+  <label>Author:
+    <textarea name="author" id="">{{author}}</textarea>
+  </label>
+  <br>
+  <br>
+  <input class="submitBtn" type="submit" value="Submit"> {{/with}}
+</form>
+
+
+{{#with editArt}}
+<form action="/articles/{{title}}?_method=DELETE" method="post">
+  <button class="submitBtn" type="submit">Delete Article</button>
+  {{/with}}
+</form>

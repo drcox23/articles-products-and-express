@@ -23,8 +23,8 @@ class Articles {
     return [...this._storage];
   }
 
-  getTitle() {
-    return this.headerName;
+  getTitle(title) {
+    return this._storage.filter(element => title == element.title)[0];
   }
 
   getArticleById(id) {
