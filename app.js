@@ -116,7 +116,7 @@ app.delete("/articles/:title", (req, res) => {
 //get to products index
 app.get("/products", (req, res) => {
   const products = DS_Prod.all();
-  if (products) {
+  if (products.length > 0) {
     console.log("products", products);
     res.render("index", { products });
   } else {
