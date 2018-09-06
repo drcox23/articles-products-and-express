@@ -12,7 +12,7 @@ class Products {
     return [...this._storage];
   }
 
-  getArticleById(id) {
+  getProductById(id) {
     return this._storage.filter(article => id == article.id)[0];
   }
 
@@ -27,7 +27,15 @@ class Products {
     product.id = this._count;
   }
   deleteProductById(id) {
-    product.id = this._count;
+    let removedProduct = null;
+    console.log("full DS before delete: ", this._storage);
+    this._storage.forEach((element, index) => {
+      if (element.id == id) {
+        removedProduct = this._storage.splice(index, 1);
+      }
+    });
+    console.log("DS after delete: ", this._storage);
+    return removedProduct;
   }
 }
 

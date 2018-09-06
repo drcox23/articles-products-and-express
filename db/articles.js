@@ -24,13 +24,14 @@ class Articles {
   }
 
   getTitle(title) {
-    return this._storage.filter(element => title == element.title)[0];
+    return this._storage.filter(article => title == article.title)[0];
   }
 
   getArticleById(id) {
     return this._storage.filter(article => id == article.id)[0];
   }
 
+  // add an article function
   add(article) {
     article.id = this._count;
     this._storage.push(article);
@@ -38,8 +39,18 @@ class Articles {
     return article.id;
   }
 
-  updateArticleById(id) {}
-  deleteArticleById(id) {}
+  // function to delete article
+  deleteArticleByTitle(title) {
+    let removedArticle = null;
+    console.log("full DS before delete: ", this._storage);
+    this._storage.forEach((element, index) => {
+      if (element.title === title) {
+        removedArticle = this._storage.splice(index, 1);
+      }
+    });
+    console.log("DS after delete: ", this._storage);
+    return removedArticle;
+  }
 }
 
 module.exports = Articles;

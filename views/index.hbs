@@ -3,7 +3,7 @@
 <h1>Articles:</h1>
 {{#each articles}}
 <div>
-  <a href='/articles/{{id}}'>{{title}}</a>
+  <a href='/articles/{{title}}'>{{title}}</a>
 </div>
 {{/each}}
 
@@ -17,6 +17,13 @@
   <a href='/products/{{id}}'>{{name}}</a>
 </div>
 {{/each}}
+
+<br>
+<a href="/products/new">NEW ITEM</a>
+{{/if}} {{#if newProdPage}}
+
+<h1>Products:</h1>
+
 
 <br>
 <a href="/products/new">NEW ITEM</a>

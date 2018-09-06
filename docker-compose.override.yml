@@ -1,9 +1,9 @@
-version: '3'
+version: "3"
 services:
   my-app:
     image: drcox23/articles-products-and-express:${IMAGE_VERSION}-local
     command: ["./node_modules/.bin/nodemon", "app.js"]
-    container_name: articles-products-andexpress
+    container_name: articles-products-and-express
     volumes:
       - ".:/app/:rw"
     env_file: .env
@@ -14,5 +14,5 @@ services:
     networks:
       - my-app-network
 
-networks:
+networks: 
   my-app-network:
