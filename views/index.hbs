@@ -1,4 +1,5 @@
- {{#if articles}}
+{{!-- index.hbs --}}
+{{#if articles}}
 
 <h1>Articles:</h1>
 {{#each articles}}
@@ -8,7 +9,9 @@
 {{/each}}
 
 <br>
-<a href="/articles/new">NEW ITEM</a>
+<button id="newArtButton">
+  <a href="/articles/new">NEW ITEM</a>
+</button>
 {{/if}} {{#if products}}
 
 <h1>Products:</h1>
@@ -19,7 +22,9 @@
 {{/each}}
 
 <br>
-<a href="/products/new">NEW ITEM</a>
+<button id="newProdButton">
+  <a href="/products/new">NEW ITEM</a>
+</button>
 {{/if}} {{#if newProdPage}}
 
 <h1>Products:</h1>
@@ -28,3 +33,6 @@
 <br>
 <a href="/products/new">NEW ITEM</a>
 {{/if}}
+
+<br>
+<br>{{> footer}}
