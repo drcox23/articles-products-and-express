@@ -1,9 +1,10 @@
 var gulp = require("gulp");
 var scss = require("gulp-sass");
 var browserSync = require("browser-sync");
+const PORT = process.env.PORT || 9000;
 
 browserSync.init({
-  proxy: `localhost:{PORT}`
+  proxy: `localhost:${PORT}`
 });
 
 // gulp.task defines a new task giving it a name and a callback function which will be called when the task is run

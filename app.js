@@ -6,7 +6,7 @@ const exphbs = require("express-handlebars");
 
 const prodRoute = require("./routes/prodRoutes");
 const artRoute = require("./routes/artRoutes");
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 9000;
 
 app.use(express.static("public"));
 
