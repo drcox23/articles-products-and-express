@@ -2,7 +2,7 @@ version: "3"
 services:
   my-app:
     image: drcox23/articles-products-and-express:${IMAGE_VERSION}-local
-    command: ["./node_modules/.bin/nodemon", "app.js"]
+    command: ["npm", "run", "dev"]
     container_name: articles-products-and-express
     volumes:
       - ".:/app/:rw"
@@ -11,8 +11,10 @@ services:
       NODE_ENV: development
     ports:
       - "${PORT}:${PORT}"
+      - "3000:3000" ##browsersync when running node app.js
+      - "3001:3001" ##browsersync when running node app.js
     networks:
       - my-app-network
 
-networks: 
-  my-app-network:
+networks:
+  ? my-app-network
