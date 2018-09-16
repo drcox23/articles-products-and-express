@@ -3,10 +3,11 @@ const app = express();
 const bp = require("body-parser");
 const methodOverride = require("method-override");
 const exphbs = require("express-handlebars");
+const knex = require('./knex/knex.js');
 
 const prodRoute = require("./routes/prodRoutes");
 const artRoute = require("./routes/artRoutes");
-const PORT = process.env.PORT || 9000;
+// const PORT = process.env.PORT || 9000;
 
 app.use(express.static("public"));
 
@@ -29,6 +30,6 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-app.listen(PORT, () => {
-  console.log(`Started app on port: ${process.env.PORT}`);
+app.listen(process.env.EXPRESS_CONTAINER_PORT, () => {
+  console.log(`Started app on port: ${process.env.EXPRESS_CONTAINER_PORT}`);
 });
