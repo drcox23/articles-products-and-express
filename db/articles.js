@@ -25,21 +25,28 @@ class Articles {
   }
 
   getTitle(title) {
-    return this._storage.filter(article => title == article.title)[0];
+    console.log("title check: ", title)
+    return this.knex.raw(`SELECT * FROM articles WHERE title = '${title}'`);
   }
 
-  getArticleById(id) {
-    return this._storage.filter(article => id == article.id)[0];
-  }
+  // getArticleById(id) {
+  //   return this._storage.filter(article => id == article.id)[0];
+  // }
 
   // add an article function
   add(article) {
     // article.id = this._count;
     // this._storage.push(article);
     // this._count++;
-    this.knex('articles').insert({title:`${this.title}`, body:`${this.body}`, author:`${this.author}`})
-    console.log("tryna put it in the db: ", this.knex)
-    return article.id;
+    const insertArt = this.knex.raw(`INSERT INTO articles (title, body, author) VALUES ('${article.title}', '${article.body}', '${article.author}')`)
+    // console.log("tryna put it in the db: ", insertArt)
+    return insertArt;
+  }
+
+  editArticle(article) {
+    const editArt = this.knex.raw(`UPDATE articles SET title = '${article.title}', body = '${article.body}', author = '${article.author}' WHERE title = '${article.title}'`)
+    console.log("edit: ", this.editArt)
+    return editArt;
   }
 
   // function to delete article

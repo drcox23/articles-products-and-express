@@ -35,9 +35,10 @@ router.get("/:title", (req, res) => {
   const { title } = req.params;
   // const editArtItem = DS_Art.getTitle(title);
   // console.log("selected: ", editArtItem);
-  knex.raw(`SELECT * FROM articles WHERE title = ${title}`)
+  DS_Art.getTitle(title)
   .then( result => {
     const title = result.rows[0]
+    console.log("check title: ", title)
     res.render('articles', title);
   })
   .catch( err => {
@@ -48,44 +49,58 @@ router.get("/:title", (req, res) => {
 // get the edit form
 router.get("/:title/edit", (req, res) => {
   console.log("this is to get articles to edit");
-  const {
-    title
-  } = req.params;
+  const { title } = req.params;
   console.log("we are editing: ", title);
-  const editArtItem = DS_Art.getTitle(title);
-  res.render("edit", {
-    editArtItem
-  });
+  DS_Art.getTitle(title)
+  .then( results => {
+    const editArtItemValue = results.rows[0]
+    let editArtItem = {Art: editArtItemValue}
+    res.render('edit', editArtItem);
+  })
+  .catch( err => {
+    console.log('art get edit error: ', err)
+  })
 });
 
 //post a new article
 router.post("/new", (req, res) => {
   console.log("new article posted");
   const newArt = req.body;
-  console.log("post Art: ", newArt);
-  DS_Art.add(newArt);
-  res.redirect("/articles");
+  console.log("post Article: ", newArt);
+  DS_Art.add(newArt)
+  .then( results => {
+    res.redirect("/articles");
+
+  })
+  .catch( err => {
+    console.log('article post error: ', err)
+  })
 });
 
 //edit an article
 router.put("/:title", (req, res) => {
   console.log("lets edit this article");
   // console.log("req params: ", req.params);
-  const {
-    title
-  } = req.params;
-  let editArt = DS_Art.getTitle(title);
-  console.log("article to edit: ", editArt.title);
-  if (req.body.title !== editArt.title) {
-    editArt.title = req.body.title;
-  }
-  if (req.body.body !== editArt.body) {
-    editArt.body = req.body.body;
-  }
-  if (req.body.author !== editArt.author) {
-    editArt.author = req.body.author;
-  }
-  res.redirect(`/articles/${editArt.title}`);
+  const { title } = req.params;
+  // let editArt = DS_Art.getTitle(title);
+  // console.log("article to edit: ", editArt);
+  DS_Art.editArticle(title)
+  .then( results => {
+    res.redirect(`/articles/${editArt.title}`)
+  })
+  .catch( err => {
+    console.log('article put error: ', err)
+  })
+  // if (req.body.title !== editArt.title) {
+  //   editArt.title = req.body.title;
+  // }
+  // if (req.body.body !== editArt.body) {
+  //   editArt.body = req.body.body;
+  // }
+  // if (req.body.author !== editArt.author) {
+  //   editArt.author = req.body.author;
+  // }
+  // res.redirect(`/articles/${editArt.title}`);
 });
 
 // delete an article
