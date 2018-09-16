@@ -1,26 +1,27 @@
 class Articles {
   constructor() {
-    this._count = 1;
-    this._storage = [];
+    this.knex = require('../knex/knex.js')
+    // this._count = 1;
+    // this._storage = [];
 
-    this.add({
-      title: "Brand New Article",
-      body: "This is a new article",
-      author: "LeBron James"
-    });
-    this.add({
-      title: "Sports Article",
-      body: "This is a generic sports article",
-      author: "Dan Patrick"
-    });
-    this.add({
-      title: "Fashion Article",
-      body: "This is a generic fashion article",
-      author: "Versace"
-    });
+    // this.add({
+    //   title: "Brand New Article",
+    //   body: "This is a new article",
+    //   author: "LeBron James"
+    // });
+    // this.add({
+    //   title: "Sports Article",
+    //   body: "This is a generic sports article",
+    //   author: "Dan Patrick"
+    // });
+    // this.add({
+    //   title: "Fashion Article",
+    //   body: "This is a generic fashion article",
+    //   author: "Versace"
+    // });
   }
   all() {
-    return [...this._storage];
+    return this.knex.raw('SELECT * FROM articles')
   }
 
   getTitle(title) {
@@ -33,9 +34,11 @@ class Articles {
 
   // add an article function
   add(article) {
-    article.id = this._count;
-    this._storage.push(article);
-    this._count++;
+    // article.id = this._count;
+    // this._storage.push(article);
+    // this._count++;
+    this.knex('articles').insert({title:`${this.title}`, body:`${this.body}`, author:`${this.author}`})
+    console.log("tryna put it in the db: ", this.knex)
     return article.id;
   }
 

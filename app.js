@@ -11,7 +11,9 @@ const artRoute = require("./routes/artRoutes");
 
 app.use(express.static("public"));
 
-app.use(bp.urlencoded({ extended: true }));
+app.use(bp.urlencoded({
+  extended: true
+}));
 
 // setting up for method-override
 app.use(methodOverride("X-HTTP-Method-Override"));
@@ -20,7 +22,10 @@ app.use(methodOverride("_method"));
 app.use("/products", prodRoute);
 app.use("/articles", artRoute);
 
-app.engine(".hbs", exphbs({ defaultLayout: "main", extname: ".hbs" }));
+app.engine(".hbs", exphbs({
+  defaultLayout: "main",
+  extname: ".hbs"
+}));
 app.set("view engine", ".hbs");
 
 //render home page
