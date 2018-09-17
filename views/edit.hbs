@@ -1,4 +1,4 @@
-{{!-- ARTICLES -- edit and delete --}} 
+{{!-- ARTICLES -- edit and delete --}}
 {{!-- <div>"HI"</div> --}}
 {{#with Art}}
 <form action="/articles/{{title}}?_method=PUT" method="post">
@@ -18,7 +18,7 @@
 </form>
 
 
-{{#with editArtItem}}
+{{#with Art}}
 <form action="/articles/{{title}}?_method=DELETE" method="post">
   <button class="submitBtn" type="submit">Delete Article</button>
   {{/with}}

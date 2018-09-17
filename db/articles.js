@@ -43,23 +43,20 @@ class Articles {
     return insertArt;
   }
 
-  editArticle(article) {
-    const editArt = this.knex.raw(`UPDATE articles SET title = '${article.title}', body = '${article.body}', author = '${article.author}' WHERE title = '${article.title}'`)
-    console.log("edit: ", this.editArt)
+  editArticle(article, artTitle) {
+    // console.log("whats being sent over: ", article)
+    // console.log("original title: ", artTitle);
+    const editArt = this.knex.raw(`UPDATE articles SET title = '${article.title}', body = '${article.body}', author = '${article.author}' WHERE title = '${artTitle.title}'`)
+    // console.log("edit: ", editArt);
     return editArt;
   }
 
   // function to delete article
   deleteArticleByTitle(title) {
-    let removedArticle = null;
-    console.log("full DS before delete: ", this._storage);
-    this._storage.forEach((element, index) => {
-      if (element.title === title) {
-        removedArticle = this._storage.splice(index, 1);
-      }
-    });
-    console.log("DS after delete: ", this._storage);
-    return removedArticle;
+
+    const removeArticle = this.knex.raw(`DELETE FROM articles WHERE title = '${title}'`)
+
+    return removeArticle;
   }
 }
 
