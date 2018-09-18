@@ -1,15 +1,16 @@
 class Products {
   constructor() {
-    this._count = 1;
-    this._storage = [];
-    this.add({
-      name: "This is a Product",
-      price: 10.0,
-      inventory: 3
-    });
+    this.knex = require('../knex/knex.js')
+    // this._count = 1;
+    // this._storage = [];
+    // this.add({
+    //   name: "This is a Product",
+    //   price: 10.0,
+    //   inventory: 3
+    // });
   }
   all() {
-    return [...this._storage];
+    return this.knex.raw('SELECT * FROM products')
   }
 
   getProductById(id) {

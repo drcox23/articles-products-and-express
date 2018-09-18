@@ -11,9 +11,16 @@ router.get("/", (req, res) => {
   DS_Art.all()
     .then(results => {
       const articles = results.rows
-      res.render('index', {
-        articles
-      })
+      if (articles.length > 0) {
+        res.render('index', {
+          articles
+        })
+      } else {
+        const newArtPage = true;
+        res.render("index", {
+          newArtPage
+        });
+      }
     })
     .catch(err => {
       console.log('error', err)

@@ -4,6 +4,7 @@ const express = require("express");
 const router = express.Router();
 const Products = require("../db/products.js");
 const DS_Prod = new Products();
+const knex = require("../knex/knex.js");
 
 // middleware for the Product Routes
 // router.use(routeCheck, (req, res, next) => {
@@ -13,27 +14,41 @@ const DS_Prod = new Products();
 
 //get to products index
 router.get("/", (req, res) => {
-  const products = DS_Prod.all();
-  if (products.length > 0) {
-    console.log("products", products);
-    res.render("index", { products });
-  } else {
-    const newProdPage = true;
-    res.render("index", { newProdPage });
-  }
+  DS_Prod.all()
+    .then(results => {
+      const products = results.rows;
+      if (products.length > 0) {
+        res.render('index', {
+          products
+        });
+      } else {
+        const newProdPage = true;
+        res.render("index", {
+          newProdPage
+        });
+      }
+    })
+    .catch(err => {
+      console.log('error: ', err)
+    })
+
 });
 
 //get to new products form
 router.get("/new", (req, res) => {
   console.log("lets add an product");
   const addProduct = true;
-  res.render("form", { addProduct });
+  res.render("form", {
+    addProduct
+  });
 });
 
 // get to products details
 router.get("/:id", (req, res) => {
   console.log("call the prod DEETS");
-  const { id } = req.params;
+  const {
+    id
+  } = req.params;
   const prodDeets = DS_Prod.getProductById(id);
   console.log("product: ", prodDeets);
   res.render("products", prodDeets);
@@ -51,17 +66,23 @@ router.post("/new", (req, res) => {
 // get the product edit form
 router.get("/:id/edit", (req, res) => {
   console.log("this is to get products to edit");
-  const { id } = req.params;
+  const {
+    id
+  } = req.params;
   console.log("we are editing: ", id);
   const editProdItem = DS_Prod.getProductById(id);
-  res.render("edit", { editProdItem });
+  res.render("edit", {
+    editProdItem
+  });
 });
 
 // edit the product details
 router.put("/:id", (req, res) => {
   console.log("lets edit this product");
   // console.log("req params: ", req.params);
-  const { id } = req.params;
+  const {
+    id
+  } = req.params;
   let editProduct = DS_Prod.getProductById(id);
   console.log("product to edit: ", editProduct.id);
   if (req.body.name !== editProduct.name) {
@@ -79,7 +100,9 @@ router.put("/:id", (req, res) => {
 // delete the product
 router.delete("/:id", (req, res) => {
   console.log("delete the product item: ", req.params);
-  const { id } = req.params;
+  const {
+    id
+  } = req.params;
   console.log("req.params: ", id);
   let deleteProd = DS_Prod.deleteProductById(id);
   console.log("product to delete is: ", deleteProd);

@@ -12,7 +12,21 @@
 <button id="newArtButton">
   <a href="/articles/new">NEW ITEM</a>
 </button>
-{{/if}} {{#if products}}
+{{/if}}
+
+{{#if newArtPage}}
+
+<h1>Articles:</h1>
+
+
+<br>
+<button id="newArtButton">
+  <a href="/articles/new">NEW ITEM</a>
+</button>
+{{/if}}
+
+
+{{#if products}}
 
 <h1>Products:</h1>
 {{#each products}}
