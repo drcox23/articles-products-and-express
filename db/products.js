@@ -14,29 +14,26 @@ class Products {
   }
 
   getProductById(id) {
-    return this._storage.filter(article => id == article.id)[0];
+    console.log("id check: ", id);
+    return this.knex.raw(`SELECT * FROM products WHERE id = ${id}`);
+
   }
 
   add(product) {
-    product.id = this._count;
-    this._storage.push(product);
-    this._count++;
-    return product.id;
+    const insertProduct = this.knex.raw(`INSERT INTO products (name, price, inventory) VALUES ('${product.name}', ${product.price}, ${product.inventory})`);
+    return insertProduct;
   }
 
-  updateProductById(id) {
-    product.id = this._count;
+  updateProductById(product, pId) {
+    console.log('whats being sent over: ', product, pId)
+
+    const editProduct = this.knex.raw(`UPDATE products SET name = '${product.name}', price = ${product.price}, inventory = ${product.inventory} WHERE id = ${pId}`);
+    return editProduct;
   }
-  deleteProductById(id) {
-    let removedProduct = null;
-    console.log("full DS before delete: ", this._storage);
-    this._storage.forEach((element, index) => {
-      if (element.id == id) {
-        removedProduct = this._storage.splice(index, 1);
-      }
-    });
-    console.log("DS after delete: ", this._storage);
-    return removedProduct;
+
+  deleteProductById(pId) {
+    const removeProduct = this.knex.raw(`DELETE FROM products WHERE id = ${pId}`);
+    return removeProduct;
   }
 }
 

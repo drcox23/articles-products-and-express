@@ -25,7 +25,7 @@
 </form>
 
 
-{{!-- PRODUCTS -- edit and delete --}} {{#with editProdItem}}
+{{!-- PRODUCTS -- edit and delete --}} {{#with Product}}
 <form action="/products/{{id}}?_method=PUT" method="post">
 
   <label>Name:
@@ -43,7 +43,7 @@
 </form>
 
 
-{{#with editProdItem}}
+{{#with Product}}
 <form action="/products/{{id}}?_method=DELETE" method="post">
   <button class="submitBtn" type="submit">Delete Item</button>
   {{/with}}
