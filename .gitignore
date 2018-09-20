@@ -1,5 +1,5 @@
 ## Hidden Files
-.env*
+.env
 
 ## Node Files
 node_modules/
