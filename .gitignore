@@ -1,2 +1,6 @@
-.env
-node_modules
+## Hidden Files
+.env*
+
+## Node Files
+node_modules/
+
