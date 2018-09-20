@@ -1,0 +1,81 @@
+body {
+  font-family: 'Space Mono', monospace;
+  background-color: aquamarine ;
+  // text-align: center;
+}
+
+.articles {
+  // height: 500px;
+  // width: 500px;
+  background: url(https://media3.giphy.com/media/v2xIous7mnEYg/giphy.gif) no-repeat center center fixed; 
+  background-size: cover;
+}
+
+// #article-div img { display: none; }
+
+#article-div.currently-loading img { 
+    display: block; 
+    width: 100%;
+    height: 100%;
+}
+
+h1 {
+  text-align: left;
+}
+
+form {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+label {
+  color: red;
+  padding: 10px;
+  justify-content: flex-start;
+  align-content: center;
+  vertical-align: middle;
+}
+
+textarea {
+  color: crimson;
+  font-family: 'Space Mono', monospace;
+  font-size: 20px;
+  height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 40px;
+}
+
+.submitBtn, button {
+  border-radius: 25px;
+  background-color: purple;
+  padding: 10px;
+  margin: 10px;
+  height: 75px;
+  width: 150px;
+  font-size: 16px;
+  font-family: 'Space Mono', monospace;
+  color: white;
+
+
+}
+
+/* unvisited link */
+a:link {
+  color: white;
+}
+
+/* visited link */
+a:visited {
+  color: white;
+}
+
+/* mouse over link */
+a:hover {
+  color: grey;
+}
+
+/* selected link */
+a:active {
+  color: red;
+}
