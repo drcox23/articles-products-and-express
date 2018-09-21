@@ -1,10 +1,30 @@
 body {
   font-family: 'Space Mono', monospace;
-  background-color: aquamarine; }
+  background-color: #212222; }
 
-.articles {
-  background: url(https://media3.giphy.com/media/v2xIous7mnEYg/giphy.gif) no-repeat center center fixed;
-  background-size: cover; }
+.mainContainer {
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center; }
+  .mainContainer a {
+    font-size: 30px;
+    font-weight: bold; }
+  .mainContainer .articles {
+    height: 250px;
+    width: 500px;
+    padding: 20px;
+    margin: 10px;
+    background-image: url("https://i.pinimg.com/originals/26/07/ad/2607ad57a9a8a5b42db5b55871908c78.gif");
+    background-repeat: no-repeat;
+    background-size: contain; }
+  .mainContainer .products {
+    height: 250px;
+    width: 500px;
+    padding: 20px;
+    margin: 10px;
+    background-image: url("https://media.giphy.com/media/uema5crNU5tHG/giphy-downsized-large.gif");
+    background-repeat: no-repeat;
+    background-size: contain; }
 
 #article-div.currently-loading img {
   display: block;
@@ -12,7 +32,8 @@ body {
   height: 100%; }
 
 h1 {
-  text-align: left; }
+  text-align: left;
+  color: white; }
 
 form {
   display: flex;
@@ -34,7 +55,8 @@ textarea {
   vertical-align: middle;
   line-height: 40px; }
 
-.submitBtn, button {
+.submitBtn,
+button {
   border-radius: 25px;
   background-color: purple;
   padding: 10px;
