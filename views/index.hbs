@@ -1,0 +1,38 @@
+{{!-- index.hbs --}}
+{{#if articles}}
+
+<h1>Articles:</h1>
+{{#each articles}}
+<div>
+  <a href='/articles/{{title}}'>{{title}}</a>
+</div>
+{{/each}}
+
+<br>
+<button id="newArtButton">
+  <a href="/articles/new">NEW ITEM</a>
+</button>
+{{/if}} {{#if products}}
+
+<h1>Products:</h1>
+{{#each products}}
+<div>
+  <a href='/products/{{id}}'>{{name}}</a>
+</div>
+{{/each}}
+
+<br>
+<button id="newProdButton">
+  <a href="/products/new">NEW ITEM</a>
+</button>
+{{/if}} {{#if newProdPage}}
+
+<h1>Products:</h1>
+
+
+<br>
+<a href="/products/new">NEW ITEM</a>
+{{/if}}
+
+<br>
+<br>{{> footer}}

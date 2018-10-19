@@ -1,0 +1,48 @@
+{{!-- ARTICLES -- edit and delete --}} {{#with editArtItem}}
+<form action="/articles/{{title}}?_method=PUT" method="post">
+
+  <label>Title:
+    <textarea name="title" id="">{{title}}</textarea>
+  </label>
+  <label>Body:
+    <textarea name="body" id="">{{body}}</textarea>
+  </label>
+  <label>Author:
+    <textarea name="author" id="">{{author}}</textarea>
+  </label>
+  <br>
+  <br>
+  <input class="submitBtn" type="submit" value="Submit"> {{/with}}
+</form>
+
+
+{{#with editArtItem}}
+<form action="/articles/{{title}}?_method=DELETE" method="post">
+  <button class="submitBtn" type="submit">Delete Article</button>
+  {{/with}}
+</form>
+
+
+{{!-- PRODUCTS -- edit and delete --}} {{#with editProdItem}}
+<form action="/products/{{id}}?_method=PUT" method="post">
+
+  <label>Name:
+    <textarea name="name" id="">{{name}}</textarea>
+  </label>
+  <label>Price $:
+    <textarea name="price" id="">{{price}}</textarea>
+  </label>
+  <label>Inventory:
+    <textarea name="inventory" id="">{{inventory}}</textarea>
+  </label>
+  <br>
+  <br>
+  <input class="submitBtn" type="submit" value="Submit"> {{/with}}
+</form>
+
+
+{{#with editProdItem}}
+<form action="/products/{{id}}?_method=DELETE" method="post">
+  <button class="submitBtn" type="submit">Delete Item</button>
+  {{/with}}
+</form>
